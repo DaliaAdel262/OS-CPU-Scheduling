@@ -31,7 +31,7 @@ class Process{
 }
 
 
-class GanttChart extends JPanel {
+class GUI extends JPanel {
 	int n;
 	Process[] processes = new Process[n];
     private int contextSwitch;
@@ -39,7 +39,7 @@ class GanttChart extends JPanel {
     private double avgTurnaroundTime;
     private int time;
 
-    public GanttChart(Process[] processes,int n, int contextSwitch, double avgWaitingTime, double avgTurnaroundTime,int time) {
+    public GUI(Process[] processes,int n, int contextSwitch, double avgWaitingTime, double avgTurnaroundTime,int time) {
         this.processes = processes;
         this.contextSwitch = contextSwitch;
         this.avgWaitingTime = avgWaitingTime;
@@ -209,7 +209,7 @@ public class CPU {
 		
 		// Create and display the chart 
 		JFrame jf = new JFrame("CPU Sceduling Graph"); 
-		GanttChart chart = new GanttChart(processes,n, contextSwitch, (totalWait/n), (totalTurnaround/n),time);
+		GUI chart = new GUI(processes,n, contextSwitch, (totalWait/n), (totalTurnaround/n),time);
 		jf.add(chart); 
 		jf.pack(); //to adjust its size 
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//to terminate after closing the chart
