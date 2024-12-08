@@ -2,7 +2,7 @@ package first;
 
 import java.awt.*;
 
-public class Process {
+public class Process implements Cloneable {
     String name;
     int arrival;
     int burst;
@@ -17,5 +17,10 @@ public class Process {
         this.burst=burst;
         this.priority=priority;
         this.color = colour;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }

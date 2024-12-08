@@ -21,9 +21,9 @@ public class Main {
         double totalTurnaround=0;
         double totalWait=0;
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the number of processes: ");
+        System.out.println("Enter the number of Processes: ");
         int n = scanner.nextInt();
-        Process[] processes = new Process[n];
+        Process[] Processes = new Process[n];
         System.out.println("Enter the context switching time: ");
         int contextSwitch=scanner.nextInt();
 
@@ -43,7 +43,7 @@ public class Main {
             int priority = scanner.nextInt();
             Color c = coloring(color);
             System.out.println();
-            processes[i] = new Process(name, arrival, burst, priority, c);
+            Processes[i] = new Process(name, arrival, burst, priority, c);
         }
 
         while(true){
@@ -60,13 +60,13 @@ public class Main {
             switch(choice){
                 case 1:
                     PriorityScheduler priorityScheduler = new PriorityScheduler();
-                    priorityScheduler.schedule(n,processes, contextSwitch);
+                    priorityScheduler.schedule(n, Processes, contextSwitch);
                     break;
                 case 2:
                     break;
                 case 3:
                     SRTFScheduler srtfScheduler = new SRTFScheduler();
-                    srtfScheduler.schedule(n, processes, contextSwitch);
+                    srtfScheduler.schedule(n, Processes, contextSwitch);
                     break;
                 case 4:
                     break;

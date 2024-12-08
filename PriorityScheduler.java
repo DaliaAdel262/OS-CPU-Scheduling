@@ -3,7 +3,15 @@ import javax.swing.*;
 
 public class PriorityScheduler {
 
-	public void schedule(int n, Process[] processes, int contextSwitch) {
+	public void schedule(int n, Process[] originalProcesses, int contextSwitch) {
+		Process[] processes = new Process[originalProcesses.length];
+		for (int i = 0; i < originalProcesses.length; i++) {
+            try {
+                processes[i] = (Process) originalProcesses[i].clone();
+            } catch (CloneNotSupportedException e) {
+                throw new RuntimeException(e);
+            }
+		}
 		double totalTurnaround = 0;
 		double totalWait = 0;
 		int time = 0;
@@ -59,7 +67,7 @@ public class PriorityScheduler {
 
 		// Create and display the chart
 		JFrame jf = new JFrame("CPU Sceduling Graph");
-		GUI chart = new GUI(processes, n, contextSwitch, (totalWait / n), (totalTurnaround / n), time);
+		PriorityScheduleGUI chart = new PriorityScheduleGUI(processes, n, contextSwitch, (totalWait / n), (totalTurnaround / n), time);
 		jf.add(chart);
 		jf.pack(); //to adjust its size
 		jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);// release resources after closing the chart

@@ -2,7 +2,7 @@ package first;
 import javax.swing.*;
 import java.awt.*;
 
-class GUI extends JPanel {
+class PriorityScheduleGUI extends JPanel {
     int n;
     Process[] processes = new Process[n];
     private int contextSwitch;
@@ -10,7 +10,7 @@ class GUI extends JPanel {
     private double avgTurnaroundTime;
     private int time;
 
-    public GUI(Process[] processes,int n, int contextSwitch, double avgWaitingTime, double avgTurnaroundTime,int time) {
+    public PriorityScheduleGUI(Process[] processes,int n, int contextSwitch, double avgWaitingTime, double avgTurnaroundTime,int time) {
         this.processes = processes;
         this.contextSwitch = contextSwitch;
         this.avgWaitingTime = avgWaitingTime;
