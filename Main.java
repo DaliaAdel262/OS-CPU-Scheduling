@@ -1,8 +1,21 @@
 package first;
 
+import java.awt.*;
+import java.lang.reflect.Field;
 import java.util.Scanner;
 
 public class Main {
+    public static Color coloring(String colorr) {
+        colorr.toUpperCase();
+        try {
+            Field field = Class.forName("java.awt.Color").getField(colorr);
+            return (Color)field.get(null);
+        } catch (Exception e) {
+            System.out.println("Sorry invalid color name");
+            return  null;
+        }
+
+    }
     public static void main(String[] args){
 
         double totalTurnaround=0;
@@ -20,14 +33,17 @@ public class Main {
             System.out.println(" data: ");
             System.out.println("Enter The Process Name: ");
             String name= scanner.next();
+            System.out.println("Enter The Process Color: ");
+            String color= scanner.next();
             System.out.println("Enter The Process Arrival Time: ");
             int arrival = scanner.nextInt();
             System.out.println("Enter The Process Burst Time: ");
             int burst = scanner.nextInt();
             System.out.println("Enter The Process Priority Number(The highest priority is the lowest integer): ");
             int priority = scanner.nextInt();
+            Color c = coloring(color);
             System.out.println();
-            processes[i] = new Process(name, arrival, burst, priority);
+            processes[i] = new Process(name, arrival, burst, priority, c);
         }
 
         while(true){
@@ -44,16 +60,18 @@ public class Main {
             switch(choice){
                 case 1:
                     PriorityScheduler priorityScheduler = new PriorityScheduler();
-                    priorityScheduler.schedule(processes, contextSwitch);
+                    priorityScheduler.schedule(n,processes, contextSwitch);
                     break;
                 case 2:
                     break;
                 case 3:
+                    SRTFScheduler srtfScheduler = new SRTFScheduler();
+                    srtfScheduler.schedule(n, processes, contextSwitch);
                     break;
                 case 4:
                     break;
                 case 5:
-                    break;
+                    return;
                 default:
                     System.out.println("Invalid option");
             }
