@@ -1,3 +1,4 @@
+package first;
 import javax.swing.*;
 import java.awt.*;
 import java.lang.reflect.Field;
@@ -9,7 +10,7 @@ public class SJF_Aging{
   
   public void execute(Process[] OriginalProcesses) {
     //using copy of process instances
-        Process[] processes = new Process[OriginalProcesses.length];
+      Process[] processes = new Process[OriginalProcesses.length];
         for (int i = 0; i < OriginalProcesses.length; i++) {
             processes[i] = OriginalProcesses[i];
         }

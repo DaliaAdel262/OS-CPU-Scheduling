@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 
 public class SJFScheduler {
   
-        public void execute(Process[] processes) {
+        public void execute(Process[] OriginalProcesses) {
 
           //using copy of process instances
         Process[] processes = new Process[OriginalProcesses.length];

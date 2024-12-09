@@ -70,6 +70,8 @@ public class Main {
                     priorityScheduler.schedule(n, Processes, contextSwitch);
                     break;
                 case 2:
+                    SJFScheduler sjfScheduler = new SJFScheduler();
+                    sjfScheduler.execute(Processes);
                     break;
                 case 3:
                     SRTFScheduler srtfScheduler = new SRTFScheduler();

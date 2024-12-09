@@ -1,9 +1,11 @@
+package first;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 
-class SJF_GUI extends JPanel {
+public class SJF_GUI extends JPanel {
     int n;
     Process[] processes = new Process[n];
     private double avgWaitingTime;
