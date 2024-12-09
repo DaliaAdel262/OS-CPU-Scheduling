@@ -4,6 +4,12 @@ public class SJFScheduler {
   
         public void execute(Process[] processes) {
 
+          //using copy of process instances
+        Process[] processes = new Process[OriginalProcesses.length];
+        for (int i = 0; i < OriginalProcesses.length; i++) {
+            processes[i] = OriginalProcesses[i];
+        }
+
         int currentTime = 0;
         int completed = 0;
         float totalWaitingTime = 0, totalTurnaroundTime = 0;
