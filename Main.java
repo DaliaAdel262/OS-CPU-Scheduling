@@ -2,6 +2,8 @@ package first;
 
 import java.awt.*;
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -20,10 +22,12 @@ public class Main {
 
         double totalTurnaround=0;
         double totalWait=0;
+        int maxBurst = 0;
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the number of Processes: ");
         int n = scanner.nextInt();
         Process[] Processes = new Process[n];
+        List<processFCAI> FCAIProcesses = new ArrayList<>();
         System.out.println("Enter the context switching time: ");
         int contextSwitch=scanner.nextInt();
 
@@ -39,6 +43,9 @@ public class Main {
             int arrival = scanner.nextInt();
             System.out.println("Enter The Process Burst Time: ");
             int burst = scanner.nextInt();
+            if (burst > maxBurst){
+                maxBurst = burst;
+            }
             System.out.println("Enter The Process Priority Number(The highest priority is the lowest integer): ");
             int priority = scanner.nextInt();
             Color c = coloring(color);
@@ -69,6 +76,14 @@ public class Main {
                     srtfScheduler.schedule(n, Processes, contextSwitch);
                     break;
                 case 4:
+                    System.out.println("Enter a unique quantum for every process:-");
+                    for (int i = 0; i < n; i++) {
+                        System.out.print(Processes[i].name + ": ");
+                        int quantum = scanner.nextInt();
+                        FCAIProcesses.add(new processFCAI(Processes[i].name, Processes[i].arrival, Processes[i].burst, Processes[i].priority, quantum, Processes[i].color));
+                    }
+                    FCAIScheduler fcaiScheduler = new FCAIScheduler();
+                    fcaiScheduler.FCAIscheduling(FCAIProcesses,maxBurst,n);
                     break;
                 case 5:
                     return;
