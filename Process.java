@@ -10,6 +10,8 @@ public class Process implements Cloneable {
     int wait;
     int turnaround;
     Color color;
+    int burstTime_Aging;
+    int completionTime;
     Boolean completed = false;
     public Process(String name, int arrival, int burst, int priority, Color colour) {
         this.name=name;
