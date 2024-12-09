@@ -1,6 +1,11 @@
 public class SJF_Aging{
   
-  public void execute(Process[] processes) {
+  public void execute(Process[] OriginalProcesses) {
+    //using copy of process instances
+        Process[] processes = new Process[OriginalProcesses.length];
+        for (int i = 0; i < OriginalProcesses.length; i++) {
+            processes[i] = OriginalProcesses[i];
+        }
 
     int currentTime = 0;
         int completed = 0;
