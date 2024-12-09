@@ -10,13 +10,17 @@ import javax.swing.JFrame;
 
 public class SJFScheduler {
   
-        public void execute(Process[] OriginalProcesses) {
+        public void execute(Process[] originalProcesses) {
 
           //using copy of process instances
-        Process[] processes = new Process[OriginalProcesses.length];
-        for (int i = 0; i < OriginalProcesses.length; i++) {
-            processes[i] = OriginalProcesses[i];
-        }
+            Process[] processes = new Process[originalProcesses.length];
+            for (int i = 0; i < originalProcesses.length; i++) {
+                try {
+                    processes[i] = (Process) originalProcesses[i].clone();
+                } catch (CloneNotSupportedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
 
         int currentTime = 0;
         int completed = 0;
