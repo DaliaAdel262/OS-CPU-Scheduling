@@ -2,7 +2,7 @@ package first;
 
 public class SJFScheduler {
   
-  public void execute(Process[] processes) {
+        public void execute(Process[] processes) {
 
         int currentTime = 0;
         int completed = 0;
@@ -28,6 +28,7 @@ public class SJFScheduler {
                 totalWaitingTime += shortest.wait;
 
                 completed++;
+                shortest.completed = true;
             } else {
                 currentTime++;
             }
@@ -46,10 +47,10 @@ public class SJFScheduler {
         System.out.println("Turnaround time is " + averageTurnaroundTime);
 
         JFrame jf = new JFrame("CPU Sceduling Graph");
-        GUI chart = new GUI(processes, processes.length, (averageWaitingTime), (averageTurnaroundTime), currentTime);
+        SJF_GUI chart = new SJF_GUI(processes, processes.length, (averageWaitingTime), (averageTurnaroundTime), currentTime);
         jf.add(chart);
         jf.pack(); //to adjust its size
-        jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);//to terminate after closing the chart
-        jf.setVisible(true);
-  
+        jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);// release resources after closing the chart
+        jf.setVisible(true);//to be visible on the screen
+    }
 }
