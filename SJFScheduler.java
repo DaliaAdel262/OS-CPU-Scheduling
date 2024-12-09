@@ -1,4 +1,12 @@
 package first;
+import java.util.*;
+import java.lang.Math;
+import java.awt.Color;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import javax.swing.JFrame;
 
 public class SJFScheduler {
   
